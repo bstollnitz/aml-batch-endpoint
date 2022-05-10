@@ -1,5 +1,4 @@
 $schema: https://azuremlschemas.azureedge.net/latest/model.schema.json
 name: model-batch
 version: 1
-# To register a model, specify the local path for the saved model
 path: "../model/weights.pth"
