@@ -1,3 +1,4 @@
-$schema: https://azuremlschemas.azureedge.net/latest/dataset.schema.json
+$schema: https://azuremlschemas.azureedge.net/latest/data.schema.json
 name: dataset-invoke-batch
-local_path: ../sample-request/
+path: ../sample-request/
+type: uri_folder
