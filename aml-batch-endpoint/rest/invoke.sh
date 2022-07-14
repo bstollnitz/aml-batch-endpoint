@@ -22,14 +22,17 @@ curl --location --request POST $SCORING_URI \
 --header "Content-Type: application/json" \
 --data-raw "{
     \"properties\": {
-        \"dataset\": {
-            \"dataInputType\": \"DatasetVersion\",
-            \"datasetName\": \"$DATASET_NAME\",
-            \"datasetVersion\": \"$DATASET_VERSION\"
+        \"inputData\": {
+            \"uriFolder\": {
+                \"uri\": \"/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/data/$DATASET_NAME/versions/$DATASET_VERSION\",
+                \"jobInputType\": \"UriFolder\",
+            }
         },
-        \"outputDataset\": {
-            \"datastoreId\": \"/subscriptions/$SUBSCRIPTION_ID/resourceGroups/$RESOURCE_GROUP/providers/Microsoft.MachineLearningServices/workspaces/$WORKSPACE/datastores/workspaceblobstore\",
-            \"path\": \"$ENDPOINT_NAME\"
+        \"outputData\": {
+            \"uriFile\": {
+                \"uri\": \"azureml://datastores/workspaceblobstore/paths/$ENDPOINT_NAME/batch-endpoint-output.csv\",
+                \"jobOutputType\": \"UriFile\",
+            }
         },
     }
 }"

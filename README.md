@@ -45,23 +45,32 @@ az ml compute create -f cloud/cluster-cpu.yml
 
 ## Create the endpoint
 
-Execute the following commands, replacing `<ENDPOINT>` with the name you choose for your endpoint.
+Execute the following commands:
 
 ```
-az ml batch-endpoint create -f cloud/endpoint/endpoint.yml --name <ENDPOINT>
-az ml batch-deployment create -f cloud/endpoint/deployment.yml --set-default --endpoint-name <ENDPOINT>
+az ml batch-endpoint create -f cloud/endpoint/endpoint.yml
+az ml batch-deployment create -f cloud/endpoint/deployment.yml --set-default
 ```
 
 
 ## Invoke the endpoint
 
-Execute the following command, replacing `<ENDPOINT>` with the name you choose for your endpoint.
+Execute the following command:
 
 ```
-az ml batch-endpoint invoke --input-local-path sample-request --name <ENDPOINT>
+az ml batch-endpoint invoke --input sample-request --name endpoint-batch
 ```
 
 
 ## Get the prediction results
 
 Go to the [Azure ML portal](https://ml.azure.com), click on "Endpoints," "Batch endpoints," and click on the name of the endpoint. Then click on "Runs," and on the latest run, which is displayed at the top. Once the run has completed, write click on the circle that says "score," and choose "Access data." This will take you to the blob storage location where the prediction results are located.
+
+
+## Delete the endpoint
+
+Execute the fllowing command when you're done:
+
+```
+az ml batch-endpoint delete -n endpoint-batch -y
+```
